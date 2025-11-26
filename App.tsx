@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
-import { PROJECT_TITLE, PROJECT_DESCRIPTION } from './constants';
+import { PROJECT_TITLE } from './constants';
 import { AppTab } from './types';
 import ProjectGuidelines from './components/ProjectGuidelines';
 import RubricView from './components/RubricView';
-import AiAssistant from './components/AiAssistant';
-import { Book, FileText, Sparkles, X } from 'lucide-react';
+import { Book, FileText } from 'lucide-react';
 
 const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<AppTab>(AppTab.GUIDELINES);
-  const [isAiOpen, setIsAiOpen] = useState(false);
 
   return (
     <div className="h-full bg-slate-50 flex flex-col relative">
@@ -71,41 +69,6 @@ const App: React.FC = () => {
             </p>
         </div>
       </footer>
-
-      {/* AI Assistant FAB and Modal */}
-      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-4 pointer-events-none">
-        {isAiOpen && (
-          <div className="w-[90vw] sm:w-[400px] h-[500px] sm:h-[600px] bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col animate-fadeIn mb-2 pointer-events-auto">
-            <div className="bg-academic-600 p-3 flex justify-between items-center text-white flex-none">
-                <div className="flex items-center gap-2 font-medium">
-                    <Sparkles size={18}/>
-                    <span>AI Assistant</span>
-                </div>
-                <button 
-                  onClick={() => setIsAiOpen(false)} 
-                  className="hover:bg-academic-700 p-1 rounded-full transition-colors"
-                >
-                    <X size={18}/>
-                </button>
-            </div>
-            <div className="flex-1 overflow-hidden">
-                <AiAssistant />
-            </div>
-          </div>
-        )}
-        
-        <button
-          onClick={() => setIsAiOpen(!isAiOpen)}
-          className={`pointer-events-auto p-4 rounded-full shadow-lg transition-all duration-300 flex items-center gap-2 font-bold ${
-            isAiOpen 
-              ? 'bg-slate-700 text-white hover:bg-slate-800' 
-              : 'bg-academic-600 text-white hover:bg-academic-700 hover:scale-105'
-          }`}
-        >
-            {isAiOpen ? <X size={24}/> : <Sparkles size={24}/>}
-            {!isAiOpen && <span className="pr-1 hidden sm:inline">Ask AI</span>}
-        </button>
-      </div>
     </div>
   );
 };

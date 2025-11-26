@@ -19,10 +19,3 @@ export enum AppTab {
   GUIDELINES = 'guidelines',
   RUBRIC = 'rubric',
 }
-
-export interface ChatMessage {
-  id: string;
-  role: 'user' | 'model';
-  content: string;
-  isError?: boolean;
-}
