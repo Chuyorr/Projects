@@ -15,15 +15,14 @@ export interface RubricCriteria {
   scoreWeight: number;
 }
 
+export enum AppTab {
+  GUIDELINES = 'guidelines',
+  RUBRIC = 'rubric',
+}
+
 export interface ChatMessage {
   id: string;
   role: 'user' | 'model';
   content: string;
   isError?: boolean;
-}
-
-export enum AppTab {
-  GUIDELINES = 'guidelines',
-  RUBRIC = 'rubric',
-  ASSISTANT = 'assistant',
 }
